@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Plan</title>
+    <link rel="stylesheet" href="{% static 'products/css/styles.css' %}">
+</head>
+
+<body>
+
+    <h1>Складской план</h1>
+
+    <div class="search-container">
+        <label for="product-select">Выберите продукт:</label>
+        <input type="text" id="product-search" onkeyup="filterProducts()" placeholder="Искать продукт...">
+        <select id="product-select">
+            <option value="">--Выберите продукт--</option>
+            {% for product in products %}
+            <option value="{{ product.zone }}">{{ product.name }}</option>
+            {% endfor %}
+        </select>
+        <button onclick="highlightSelectedZone()">Показать</button>
+    </div>
+
+    <div class="warehouse">
+        <div class="zone" id="zone-1">1</div>
+        <div class="zone" id="zone-2">2</div>
+        <div class="zone" id="zone-3">3</div>
+        <div class="zone" id="zone-4">4</div>
+        <div class="zone" id="zone-5">5</div>
+        <div class="zone" id="zone-6">6</div>
+        <div class="zone" id="zone-7">7</div>
+        <div class="zone" id="zone-8">8</div>
+        <div class="zone" id="zone-9">9</div>
+        <div class="zone" id="zone-10">10</div>
+        <div class="zone" id="zone-11">11</div>
+        <div class="zone" id="zone-12">12</div>
+        <div class="zone" id="zone-13">13</div>
+        <div class="zone" id="zone-14">14</div>
+        <div class="zone" id="zone-15">15</div>
+        <div class="zone" id="zone-16">16</div>
+        <div class="zone" id="zone-17">17</div>
+        <div class="zone" id="zone-18">18</div>
+        <div class="zone" id="zone-19">19</div>
+        <div class="zone" id="zone-20">20</div>
+        <div class="zone" id="zone-21">21</div>
+    </div>
+
+    <script>
+        function filterProducts() {
+            var input, filter, select, options, i;
+            input = document.getElementById("product-search");
+            filter = input.value.toLowerCase();
+            select = document.getElementById("product-select");
+            options = select.getElementsByTagName("option");
+
+            // Перебираем все элементы списка и скрываем те, которые не соответствуют введенному тексту
+            for (i = 0; i < options.length; i++) {
+                var txtValue = options[i].text.toLowerCase();
+
+                // Проверяем, содержится ли введенный текст в любом месте названия продукта
+                if (txtValue.indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+
+        function highlightSelectedZone() {
+            var select = document.getElementById("product-select");
+            var selectedZone = select.value;
+
+            if (selectedZone) {
+                var allZones = document.getElementsByClassName("zone");
+                for (var i = 0; i < allZones.length; i++) {
+                    allZones[i].style.backgroundColor = "";
+                }
+
+                var zoneToHighlight = document.getElementById("zone-" + selectedZone);
+                if (zoneToHighlight) {
+                    zoneToHighlight.style.backgroundColor = "yellow";
+                }
+            } else {
+                alert("Пожалуйста, выберите продукт.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

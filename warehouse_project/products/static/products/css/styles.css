@@ -1,0 +1,172 @@
+.warehouse {
+    width: 700px;
+    height: 500px;
+    border: 2px solid black;
+    position: relative;
+}
+
+.zone {
+    position: absolute;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: lightgray;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/* Определяем позиции для каждой зоны на основе твоего рисунка */
+#zone-1 {
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-2 {
+    top: 100px;
+    left: 0;
+    width: 100px;
+    height: 300px;
+}
+
+#zone-3 {
+    top: 400px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-4 {
+    top: 0;
+    left: 100px;
+    width: 100px;
+    height: 50px;
+}
+
+#zone-5 {
+    top: 150px;
+    left: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-6 {
+    top: 250px;
+    left: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-7 {
+    top: 450px;
+    left: 100px;
+    width: 200px;
+    height: 50px;
+}
+
+#zone-8 {
+    top: 0;
+    left: 200px;
+    width: 100px;
+    height: 50px;
+}
+
+#zone-9 {
+    top: 150px;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-10 {
+    top: 250px;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-11 {
+    top: 0;
+    left: 300px;
+    width: 100px;
+    height: 50px;
+}
+
+#zone-12 {
+    top: 0;
+    left: 400px;
+    width: 100px;
+    height: 50px;
+}
+
+#zone-13 {
+    top: 150px;
+    left: 400px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-14 {
+    top: 250px;
+    left: 400px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-15 {
+    top: 450px;
+    left: 400px;
+    width: 200px;
+    height: 50px;
+}
+
+#zone-16 {
+    top: 0;
+    left: 500px;
+    width: 100px;
+    height: 50px;
+}
+
+#zone-17 {
+    top: 150px;
+    left: 500px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-18 {
+    top: 250px;
+    left: 500px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-19 {
+    top: 0;
+    left: 600px;
+    width: 100px;
+    height: 100px;
+}
+
+#zone-20 {
+    top: 100px;
+    left: 600px;
+    width: 100px;
+    height: 300px;
+}
+
+#zone-21 {
+    top: 400px;
+    left: 600px;
+    width: 100px;
+    height: 100px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
