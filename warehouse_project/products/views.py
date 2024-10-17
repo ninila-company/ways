@@ -22,3 +22,13 @@ def index(request):
             "selected_zone": selected_zone,
         },
     )
+
+
+def zone_products(request, zone_id):
+    # Получаем товары в выбранной зоне
+    products_in_zone = Product.objects.filter(zone=zone_id)
+    return render(
+        request,
+        "products/zone_products.html",
+        {"products": products_in_zone, "zone_id": zone_id},
+    )

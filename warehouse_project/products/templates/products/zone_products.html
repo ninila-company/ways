@@ -1,0 +1,19 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Товары в зоне {{ zone_id }}</h1>
+
+    <ul class="list-group">
+        {% for product in products %}
+        <li class="list-group-item">{{ product.name }}</li>
+        {% empty %}
+        <li class="list-group-item">Нет товаров в этой зоне</li>
+        {% endfor %}
+    </ul>
+
+    <div class="mt-4 text-center">
+        <a href="{% url 'index' %}" class="btn btn-secondary">Назад к плану склада</a>
+    </div>
+</div>
+{% endblock %}
