@@ -6,7 +6,7 @@
 
     <ul class="list-group">
         {% for product in products %}
-        <li class="list-group-item">{{ product.name }}</li>
+        <li class="list-group-item">{{ product.name }} -- {{product.count}}шт.</li>
         {% empty %}
         <li class="list-group-item">Нет товаров в этой зоне</li>
         {% endfor %}
