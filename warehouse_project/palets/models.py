@@ -8,6 +8,10 @@ class Poducts_in_palet(models.Model):
     def __str__(self):
         return self.product_name
 
+    class Meta:
+        verbose_name = "Продукт в палете"
+        verbose_name_plural = "Продукты в палете"
+
 
 class Palet(models.Model):
     number = models.IntegerField(verbose_name='Номер палеты')
@@ -18,6 +22,10 @@ class Palet(models.Model):
 
     def __str__(self):
         return str(self.number)
+
+    class Meta:
+        verbose_name = "Палета"
+        verbose_name_plural = "Палеты"
 
     def get_products_list(self):
         products = [product.product_name for product in self.description.all()]
