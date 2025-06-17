@@ -1,0 +1,43 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Паллеты ожидающие получения</h1>
+    <div class="row">
+        {% for palet in palets %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Палета №{{ palet.number }}</h5>
+                    <div class="card-text">
+                        <p><strong>Дата поступления:</strong> {{ palet.pallets_from_the_date }}</p>
+                        {% if palet.pallet_pick_up_date %}
+                        <p><strong>Дата вывоза:</strong> {{ palet.pallet_pick_up_date }}</p>
+                        {% endif %}
+                        <p><strong>Содержимое:</strong></p>
+                        <ul>
+                            {% for product in palet.description.all %}
+                            <li>{{ product.product_name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p><strong>Статус:</strong> 
+                            <span class="badge bg-warning">Ожидает получения</span>
+                        </p>
+                        <form method="post" action="{% url 'palets:send_palet' palet.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">
+                                <i class="bi bi-send"></i> заказать паллет
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center">Нет паллет ожидающих получения</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

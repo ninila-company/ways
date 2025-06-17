@@ -16,7 +16,7 @@ class PaletAdmin(admin.ModelAdmin):
 
     def get_products_list(self, obj):
         products = [product.product_name for product in obj.description.all()]
-        return "<br>".join(products)
+        return " /// ".join(products)
 
     get_products_list.short_description = "Продукты"
     get_products_list.allow_tags = True
