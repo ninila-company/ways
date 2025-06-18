@@ -3,12 +3,11 @@
 
 {% block content %}
 <body>
-
     <div class="container mt-5">
         <h1 class="text-center mb-4">Складской план</h1>
 
         <!-- Поисковая форма -->
-        <div class="search-container mb-4">
+        <div class="search-container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="input-group">
@@ -16,7 +15,6 @@
                             placeholder="Введите название...">
                         <select class="form-select" id="product-select">
                             <option value="" style="display: none;">--Выберите позицию--</option>
-                            <!-- Список продуктов -->
                             {% for product in products %}
                             <option value="{{ product.zone }}" style="display: none;">
                                 {{ product.name }}
@@ -30,69 +28,71 @@
         </div>
 
         <!-- Схема склада -->
-        <div class="warehouse">
-            <div class="zone" id="zone-1">
-                <a href="{% url 'zone_products' zone_id=1 %}" class="btn btn-primary">1</a>
-            </div>
-            <div class="zone" id="zone-2">
-                <a href="{% url 'zone_products' zone_id=2 %}" class="btn btn-primary">2</a>
-            </div>
-            <div class="zone" id="zone-3">
-                <a href="{% url 'zone_products' zone_id=3 %}" class="btn btn-primary">3</a>
-            </div>
-            <div class="zone" id="zone-4">
-                <a href="{% url 'zone_products' zone_id=4 %}" class="btn btn-primary">4</a>
-            </div>
-            <div class="zone" id="zone-5">
-                <a href="{% url 'zone_products' zone_id=5 %}" class="btn btn-primary">5</a>
-            </div>
-            <div class="zone" id="zone-6">
-                <a href="{% url 'zone_products' zone_id=6 %}" class="btn btn-primary">6</a>
-            </div>
-            <div class="zone" id="zone-7">
-                <a href="{% url 'zone_products' zone_id=7 %}" class="btn btn-primary">7</a>
-            </div>
-            <div class="zone" id="zone-8">
-                <a href="{% url 'zone_products' zone_id=8 %}" class="btn btn-primary">8</a>
-            </div>
-            <div class="zone" id="zone-9">
-                <a href="{% url 'zone_products' zone_id=9 %}" class="btn btn-primary">9</a>
-            </div>
-            <div class="zone" id="zone-10">
-                <a href="{% url 'zone_products' zone_id=10 %}" class="btn btn-primary">10</a>
-            </div>
-            <div class="zone" id="zone-11">
-                <a href="{% url 'zone_products' zone_id=11 %}" class="btn btn-primary">11</a>
-            </div>
-            <div class="zone" id="zone-12">
-                <a href="{% url 'zone_products' zone_id=12 %}" class="btn btn-primary">12</a>
-            </div>
-            <div class="zone" id="zone-13">
-                <a href="{% url 'zone_products' zone_id=13 %}" class="btn btn-primary">13</a>
-            </div>
-            <div class="zone" id="zone-14">
-                <a href="{% url 'zone_products' zone_id=14 %}" class="btn btn-primary">14</a>
-            </div>
-            <div class="zone" id="zone-15">
-                <a href="{% url 'zone_products' zone_id=15 %}" class="btn btn-primary">15</a>
-            </div>
-            <div class="zone" id="zone-16">
-                <a href="{% url 'zone_products' zone_id=16 %}" class="btn btn-primary">16</a>
-            </div>
-            <div class="zone" id="zone-17">
-                <a href="{% url 'zone_products' zone_id=17 %}" class="btn btn-primary">17</a>
-            </div>
-            <div class="zone" id="zone-18">
-                <a href="{% url 'zone_products' zone_id=18 %}" class="btn btn-primary">18</a>
-            </div>
-            <div class="zone" id="zone-19">
-                <a href="{% url 'zone_products' zone_id=19 %}" class="btn btn-primary">19</a>
-            </div>
-            <div class="zone" id="zone-20">
-                <a href="{% url 'zone_products' zone_id=20 %}" class="btn btn-primary">20</a>
-            </div>
-            <div class="zone" id="zone-21">
-                <a href="{% url 'zone_products' zone_id=21 %}" class="btn btn-primary">21</a>
+        <div class="warehouse-container">
+            <div class="warehouse">
+                <div class="zone" id="zone-1">
+                    <a href="{% url 'zone_products' zone_id=1 %}" class="btn btn-primary">1</a>
+                </div>
+                <div class="zone" id="zone-2">
+                    <a href="{% url 'zone_products' zone_id=2 %}" class="btn btn-primary">2</a>
+                </div>
+                <div class="zone" id="zone-3">
+                    <a href="{% url 'zone_products' zone_id=3 %}" class="btn btn-primary">3</a>
+                </div>
+                <div class="zone" id="zone-4">
+                    <a href="{% url 'zone_products' zone_id=4 %}" class="btn btn-primary">4</a>
+                </div>
+                <div class="zone" id="zone-5">
+                    <a href="{% url 'zone_products' zone_id=5 %}" class="btn btn-primary">5</a>
+                </div>
+                <div class="zone" id="zone-6">
+                    <a href="{% url 'zone_products' zone_id=6 %}" class="btn btn-primary">6</a>
+                </div>
+                <div class="zone" id="zone-7">
+                    <a href="{% url 'zone_products' zone_id=7 %}" class="btn btn-primary">7</a>
+                </div>
+                <div class="zone" id="zone-8">
+                    <a href="{% url 'zone_products' zone_id=8 %}" class="btn btn-primary">8</a>
+                </div>
+                <div class="zone" id="zone-9">
+                    <a href="{% url 'zone_products' zone_id=9 %}" class="btn btn-primary">9</a>
+                </div>
+                <div class="zone" id="zone-10">
+                    <a href="{% url 'zone_products' zone_id=10 %}" class="btn btn-primary">10</a>
+                </div>
+                <div class="zone" id="zone-11">
+                    <a href="{% url 'zone_products' zone_id=11 %}" class="btn btn-primary">11</a>
+                </div>
+                <div class="zone" id="zone-12">
+                    <a href="{% url 'zone_products' zone_id=12 %}" class="btn btn-primary">12</a>
+                </div>
+                <div class="zone" id="zone-13">
+                    <a href="{% url 'zone_products' zone_id=13 %}" class="btn btn-primary">13</a>
+                </div>
+                <div class="zone" id="zone-14">
+                    <a href="{% url 'zone_products' zone_id=14 %}" class="btn btn-primary">14</a>
+                </div>
+                <div class="zone" id="zone-15">
+                    <a href="{% url 'zone_products' zone_id=15 %}" class="btn btn-primary">15</a>
+                </div>
+                <div class="zone" id="zone-16">
+                    <a href="{% url 'zone_products' zone_id=16 %}" class="btn btn-primary">16</a>
+                </div>
+                <div class="zone" id="zone-17">
+                    <a href="{% url 'zone_products' zone_id=17 %}" class="btn btn-primary">17</a>
+                </div>
+                <div class="zone" id="zone-18">
+                    <a href="{% url 'zone_products' zone_id=18 %}" class="btn btn-primary">18</a>
+                </div>
+                <div class="zone" id="zone-19">
+                    <a href="{% url 'zone_products' zone_id=19 %}" class="btn btn-primary">19</a>
+                </div>
+                <div class="zone" id="zone-20">
+                    <a href="{% url 'zone_products' zone_id=20 %}" class="btn btn-primary">20</a>
+                </div>
+                <div class="zone" id="zone-21">
+                    <a href="{% url 'zone_products' zone_id=21 %}" class="btn btn-primary">21</a>
+                </div>
             </div>
         </div>
     </div>
@@ -143,6 +143,5 @@
             }
         }
     </script>
-
 </body>
 {% endblock content %}

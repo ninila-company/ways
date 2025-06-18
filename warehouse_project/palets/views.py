@@ -21,8 +21,10 @@ def send_palet(request, palet_id):
         try:
             palet = get_object_or_404(Palet, id=palet_id)
             
-            # Получаем список продуктов в паллете
-            products_list = [product.product_name for product in palet.description.all()]
+            # Получаем список продуктов в паллете с количеством
+            products_list = []
+            for product_quantity in palet.products_quantity.all():
+                products_list.append(f"{product_quantity.product.product_name} - {product_quantity.quantity} шт.")
             products_text = "\n".join(products_list)
 
             payload = {
@@ -33,10 +35,10 @@ def send_palet(request, palet_id):
 
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {os.getenv('YOUGILE_API_KEY')}"
+                "Authorization": f"Bearer {os.getenv('YOUGILE_API_KEY_ninila')}"
             }
 
-            url = f"https://ru.yougile.com/api-v2/chats/{os.getenv('YOUGILE_CHAT_ID')}/messages"
+            url = f"https://ru.yougile.com/api-v2/chats/{os.getenv('YOUGILE_CHAT_ID_ninila')}/messages"
 
             response = requests.request("POST", url, json=payload, headers=headers)
             

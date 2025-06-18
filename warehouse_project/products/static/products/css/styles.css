@@ -1,10 +1,9 @@
 .warehouse {
     width: 700px;
     height: 500px;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin: 100px auto 0;
+    transform: none;
 }
 
 .zone {
@@ -170,5 +169,41 @@
 }
 
 .search-container {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.warehouse-container {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.alert-dismissible {
+    padding-right: 3rem;
+}
+
+.alert .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.25rem;
 }

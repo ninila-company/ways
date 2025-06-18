@@ -6,7 +6,6 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название товара')
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     zone = models.IntegerField(verbose_name='Номер зоны')  # номер зоны
-    count = models.PositiveIntegerField(default=0, verbose_name='Количество товара')  # количество товара
 
     def save(self, *args, **kwargs):
         if not self.slug:

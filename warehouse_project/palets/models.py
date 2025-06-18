@@ -15,10 +15,9 @@ class Poducts_in_palet(models.Model):
 
 class Palet(models.Model):
     number = models.IntegerField(verbose_name='Номер палеты')
-    description = models.ManyToManyField(Poducts_in_palet, verbose_name='Описание палеты')
     pallets_from_the_date = models.DateField(verbose_name='Дата поступления')
-    pallet_pick_up_date = models.DateField(blank=True, null=True, verbose_name='Дата вывоза')
-    receipt_mark = models.BooleanField(default=False, verbose_name='Отметка о получении')
+    pallet_pick_up_date = models.DateField(blank=True, null=True, verbose_name='Дата получения')
+    receipt_mark = models.BooleanField(default=False, verbose_name='Отметка о заказе')
 
     def __str__(self):
         return str(self.number)
@@ -28,6 +27,21 @@ class Palet(models.Model):
         verbose_name_plural = "Палеты"
 
     def get_products_list(self):
-        products = [product.product_name for product in self.description.all()]
+        products = []
+        for product_quantity in self.products_quantity.all():
+            products.append(f"{product_quantity.product.product_name} - {product_quantity.quantity} шт.")
         return format_html("<br>".join(products))
     get_products_list.short_description = "Продукты"
+
+
+class Poducts_in_palet_quantity(models.Model):
+    palet = models.ForeignKey(Palet, on_delete=models.CASCADE, related_name='products_quantity', verbose_name='Палета')
+    product = models.ForeignKey(Poducts_in_palet, on_delete=models.CASCADE, verbose_name='Продукт')
+    quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
+
+    def __str__(self):
+        return f"{self.product.product_name} - {self.quantity} шт."
+
+    class Meta:
+        verbose_name = "Продукт в палете с количеством"
+        verbose_name_plural = "Продукты в палете с количеством"

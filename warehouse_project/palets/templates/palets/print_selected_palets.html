@@ -37,15 +37,19 @@
                 <th>Номер палеты</th>
                 <th>Продукты</th>
                 <th>Дата поступления</th>
-                <th>Дата выдачи</th>
-                <th>Отметка о получении</th>
+                <th>Дата получения</th>
+                <th>Отметка о заказе</th>
             </tr>
         </thead>
         <tbody>
             {% for palet in palets %}
             <tr>
                 <td>{{ palet.number }}</td>
-                <td>{{ palet.get_products_list }}</td>
+                <td>
+                    {% for product_quantity in palet.products_quantity.all %}
+                    {{ product_quantity.product.product_name }} - {{ product_quantity.quantity }} шт.<br>
+                    {% endfor %}
+                </td>
                 <td>{{ palet.pallets_from_the_date }}</td>
                 <td>{{ palet.pallet_pick_up_date|default:"-" }}</td>
                 <td>{{ palet.receipt_mark|yesno:"Да,Нет" }}</td>

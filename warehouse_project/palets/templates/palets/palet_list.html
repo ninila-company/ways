@@ -16,8 +16,8 @@
                         {% endif %}
                         <p><strong>Содержимое:</strong></p>
                         <ul>
-                            {% for product in palet.description.all %}
-                            <li>{{ product.product_name }}</li>
+                            {% for product_quantity in palet.products_quantity.all %}
+                            <li>{{ product_quantity.product.product_name }} - {{ product_quantity.quantity }} шт.</li>
                             {% endfor %}
                         </ul>
                         <p><strong>Статус:</strong> 
