@@ -35,10 +35,10 @@ def send_palet(request, palet_id):
 
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {os.getenv('YOUGILE_API_KEY_ninila')}"
+                "Authorization": f"Bearer {os.getenv('YOUGILE_API_KEY')}"
             }
 
-            url = f"https://ru.yougile.com/api-v2/chats/{os.getenv('YOUGILE_CHAT_ID_ninila')}/messages"
+            url = f"https://ru.yougile.com/api-v2/chats/{os.getenv('YOUGILE_CHAT_ID')}/messages"
 
             response = requests.request("POST", url, json=payload, headers=headers)
             
