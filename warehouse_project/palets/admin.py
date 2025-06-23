@@ -13,7 +13,13 @@ class Poducts_in_palet_quantityInline(admin.TabularInline):
 
 @admin.register(Palet)
 class PaletAdmin(admin.ModelAdmin):
-    list_display = ("number", "pallets_from_the_date", "pallet_pick_up_date", "receipt_mark", "get_products_list")
+    list_display = (
+        "number",
+        "pallets_from_the_date",
+        "pallet_pick_up_date",
+        "receipt_mark",
+        "get_products_list",
+    )
     list_filter = ("pallets_from_the_date", "pallet_pick_up_date", "receipt_mark")
     search_fields = ("number", "products_quantity__product__product_name")
     inlines = [Poducts_in_palet_quantityInline]
@@ -22,7 +28,9 @@ class PaletAdmin(admin.ModelAdmin):
     def get_products_list(self, obj):
         products = []
         for product_quantity in obj.products_quantity.all():
-            products.append(f"{product_quantity.product.product_name} - {product_quantity.quantity} шт.")
+            products.append(
+                f"{product_quantity.product.product_name} - {product_quantity.quantity} шт."
+            )
         return " /// ".join(products)
 
     get_products_list.short_description = "Продукты"
@@ -31,14 +39,20 @@ class PaletAdmin(admin.ModelAdmin):
     def print_selected_palets(self, request, queryset):
         try:
             palets = queryset
-            html_string = render_to_string('palets/print_selected_palets.html', {'palets': palets})
+            html_string = render_to_string(
+                "palets/print_selected_palets.html", {"palets": palets}
+            )
             pdf_file = HTML(string=html_string).write_pdf()
 
-            response = HttpResponse(pdf_file, content_type='application/pdf')
-            response['Content-Disposition'] = 'attachment; filename="selected_palets.pdf"'
+            response = HttpResponse(pdf_file, content_type="application/pdf")
+            response["Content-Disposition"] = (
+                'attachment; filename="selected_palets.pdf"'
+            )
             return response
         except Exception as e:
-            self.message_user(request, f"Ошибка при генерации PDF: {str(e)}", level='error')
+            self.message_user(
+                request, f"Ошибка при генерации PDF: {str(e)}", level="error"
+            )
             return
 
     print_selected_palets.short_description = "Печать выбранных палет"
