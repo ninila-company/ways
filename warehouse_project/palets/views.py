@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from dotenv import load_dotenv
+from django.db.models import Q
 
 from .models import Palet
 
@@ -15,8 +16,16 @@ load_dotenv()
 
 
 def palet_list(request):
-    palets = Palet.objects.filter(receipt_mark=False).order_by("number")
-    return render(request, "palets/palet_list.html", {"palets": palets})
+    search_query = request.GET.get('search', '').strip()
+    palets = Palet.objects.filter(receipt_mark=False)
+    if search_query:
+        words = search_query.split()
+        q = Q()
+        for word in words:
+            q &= Q(products_quantity__product__product_name__icontains=word)
+        palets = palets.filter(q)
+    palets = palets.order_by("number").distinct()
+    return render(request, "palets/palet_list.html", {"palets": palets, "search": search_query})
 
 
 def send_palet(request, palet_id):

@@ -3,6 +3,17 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Паллеты ожидающие получения</h1>
+    <form method="get" class="mb-4">
+        <div class="input-group shadow rounded" style="max-width: 500px; margin: 0 auto;">
+            <span class="input-group-text bg-white border-end-0" id="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.242 1.106a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                </svg>
+            </span>
+            <input type="text" class="form-control border-start-0 rounded-start-0 rounded-end" name="search" placeholder="Поиск по содержимому паллеты..." value="{{ search|default:'' }}" style="height: 48px; font-size: 1.1rem;">
+            <button class="btn btn-primary px-4" type="submit" style="height: 48px;">Поиск</button>
+        </div>
+    </form>
     <div class="row">
         {% for palet in palets %}
         <div class="col-md-4 mb-4">
