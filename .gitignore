@@ -70,3 +70,4 @@ __init__.py
 .env.prod.db
 __pycache__
 settings_local.py
+my_session.session
