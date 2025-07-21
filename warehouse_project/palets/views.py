@@ -1,3 +1,4 @@
+import asyncio
 import os
 import time
 
@@ -10,6 +11,7 @@ from dotenv import load_dotenv
 from django.db.models import Q
 
 from .models import Palet
+from .telegram_notify import send_telegram_message
 
 # Загружаем переменные окружения
 load_dotenv()
@@ -59,6 +61,15 @@ def send_palet(request, palet_id):
             try:
                 response.raise_for_status()
                 messages.success(request, f"Паллета №{palet.number} успешно заказана!")
+
+                # Отправка сообщения в Telegram
+                telegram_message = (
+                    f"Паллета №{palet.number}.\n"
+                    f"Содержимое:\n{products_text}"
+                )
+                # Укажите свой username или user_id
+                asyncio.run(send_telegram_message('Ninila_company', telegram_message))
+
                 # Помечаем паллету как полученную после успешной отправки
                 palet.receipt_mark = True
                 palet.save()
